@@ -3,7 +3,7 @@
 A library to turn an unreliable remote source of PUFFScion blocks into a reliable stream of blocks.  Handles block and log removals on chain reorganization and block and log backfills on skipped blocks.
 
 # Requirements for supported PUFFScoin node
-Blockstream requires support for [EIP-234](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-234.md) in the configured PUFFScoin node, which is naturally achieved through geth: v1.9.0-Amsterdam. Support for Parity on PUFFScoin will be investigated and implemented when that client is released.
+Blockstream requires support for EIP-234 in the configured PUFFScoin node, which is naturally achieved through gpuffs: v1.9.0-Amsterdam. Support for Parity-PUFFScoin will be forthcoming.
 
 # Usage
 
