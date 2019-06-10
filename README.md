@@ -15,7 +15,7 @@ async function getBlockByHash(hash: string): Promise<Block|null> {
     const response = await fetch("http://localhost:11363", {
         method: "POST",
         headers: new Headers({"Content-Type": "application/json"}),
-        body: { jsonrpc: "2.0", id: 1, method: "eth_getBlockByHash", params: [hash, false] }
+        body: { jsonrpc: "2.0", id: 1, method: "puffs_getBlockByHash", params: [hash, false] }
     });
     return await response.json();
 }
@@ -23,7 +23,7 @@ async function getLogs(filterOptions: FilterOptions): Promise<Log[]> {
     const response = await fetch("http://localhost:11363", {
         method: "POST",
         headers: new Headers({"Content-Type": "application/json"}),
-        body: { jsonrpc: "2.0", id: 1, method: "eth_getLogs", params: [filterOptions] }
+        body: { jsonrpc: "2.0", id: 1, method: "puffs_getLogs", params: [filterOptions] }
     });
     return await response.json();
 }
@@ -31,7 +31,7 @@ async function getLatestBlock(): Promise<Block> {
     const response = await fetch("http://localhost:11363", {
         method: "POST",
         headers: new Headers({"Content-Type": "application/json"}),
-        body: { jsonrpc: "2.0", id: 1, method: "eth_getBlockByNumber", params: ["latest", false] }
+        body: { jsonrpc: "2.0", id: 1, method: "puffs_getBlockByNumber", params: ["latest", false] }
     });
     return await response.json();
 }
@@ -58,12 +58,6 @@ blockAndLogStreamer.unsubscribeFromOnLogRemoved(onLogRemovedSubscriptionToken);
 blockAndLogStreamer.removeLogFilter(logFilterToken);
 console.log(blockAndLogStreamer.getLatestReconciledBlock());
 ```
-
-## Signatures
-Note: if you have a TypeScript aware editor this will all be available in the tooltip
-* [Filter/FilterOptions](https://github.com/ethereumjs/ethereumjs-blockstream/blob/master/source/models/filters.ts#L1-L10) - More details at [Parity JSON-RPC Wiki](https://wiki.parity.io/JSONRPC-eth-module#eth_newfilter)
-* [Block](https://github.com/ethereumjs/ethereumjs-blockstream/blob/master/source/models/block.ts#L3-L22) - More details at [Parity JSON-RPC Wiki](https://wiki.parity.io/JSONRPC-eth-module#eth_getblockbyhash)
-* [Log](https://github.com/ethereumjs/ethereumjs-blockstream/blob/master/source/models/log.ts#L1-L10) - More details at [Parity JSON-RPC Wiki](https://wiki.parity.io/JSONRPC-eth-module#eth_getfilterchanges)
 
 # Development
 
